@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Commission Queue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+
+    input[type="text"] {
+      padding: 8px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      border-radius: 0.5em; 
+      border-color: #eee;
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0.2em;
+    }
+
+    th, td {
+      border-radius: 0.3em;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f7f7f7;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    td {
+      border: 1px solid #ccc;
+    }
+
+    /* Status badge styles */
+    .status {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.9em;
+      font-weight: 600;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .รอการชำระเงิน        { background-color: #f4c7c3; color: #5a1e0c; }
+    .รอดำเนินการ         { background-color: #cccccc; color: #333; }
+    .รอการยืนยัน         { background-color: #5c2d0f; color: white; }
+    .เสร็จสิ้น             { background-color: #b7e1cd; color: #1d5c2f; }
+    .ยกเลิก               { background-color: #990000; color: white; }
+    .ระหว่างร่างภาพ       { background-color: #a3c6f1; color: #0b3d91; }
+    .ระหว่างทำงาน         { background-color: #4a90e2; color: white; }
+    .อยู่ระหว่างแก้ไข     { background-color: #f7e27f; color: #333; }
+    .N_A                  { background-color: #444; color: white; }
+  </style>
+</head>
+
+<body>
+  <div class="container-xl">
+    <br><br><br>
+    <a href="index.html"><button class="material-symbols-outlined" title="ย้อนกลับ">arrow_back</button></a>
+    <h1>ระบบตรวจสอบคิวคอมมิชชั่น PALALATPAT</h1>
+    <input type="text" id="searchInput" placeholder="ค้นหา...">
+    <table id="sheetTable"></table>
+  </div>
+
+  <script>
+    const HIDDEN_COLUMNS = [6];
+    const STATUS_COLUMN_INDEX = 3;
+
+    fetch("https://script.google.com/macros/s/AKfycbzGqyVqni0CVlk0fSv4OPfbAwJKrY2GWLUMMhMyvrA1QnjVHo-3u_3-SmxZlYS_YxghMg/exec")
+      .then(res => res.json())
+      .then(data => {
+        buildTable(data);
+      });
+
+    function buildTable(data) {
+      const table = document.getElementById("sheetTable");
+      table.innerHTML = "";
+
+      // Header row
+      const headerRow = document.createElement("tr");
+      data[0].forEach((header, i) => {
+        if (!HIDDEN_COLUMNS.includes(i)) {
+          const th = document.createElement("th");
+          th.textContent = header;
+          headerRow.appendChild(th);
+        }
+      });
+      table.appendChild(headerRow);
+
+      // Data rows
+      for (let i = 1; i < data.length; i++) {
+        const row = document.createElement("tr");
+        data[i].forEach((cell, j) => {
+          if (!HIDDEN_COLUMNS.includes(j)) {
+            const td = document.createElement("td");
+
+            // If this is the status column, apply badge style
+            if (j === STATUS_COLUMN_INDEX) {
+              const span = document.createElement("span");
+              const cleaned = (cell || "N/A").replace(/\s/g, "");
+              span.className = `status ${cleaned}`;
+              span.textContent = cell || "N/A";
+              td.appendChild(span);
+            } else {
+              td.textContent = cell;
+            }
+
+            row.appendChild(td);
+          }
+        });
+        table.appendChild(row);
+      }
+    }
+
+    // Search filter
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const filter = this.value.toLowerCase();
+      const table = document.getElementById("sheetTable");
+      const rows = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        let match = false;
+        for (let j = 0; j < cells.length; j++) {
+          if (cells[j].textContent.toLowerCase().includes(filter)) {
+            match = true;
+            break;
+          }
+        }
+        rows[i].style.display = match ? "" : "none";
+      }
+    });
+  </script>
+</body>
+</html>
