@@ -22,3 +22,15 @@ body, th, td {
     padding: 5px;
     border-radius: 100%;
 }
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(236, 236, 236);
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 600;
+}
