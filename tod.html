@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/0c58b762f7.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule (Tod)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/img/palalatpat.png">
+
+    <style>
+
+    
+            #portrait, #landscape {
+        display: none;
+        }
+
+        @media (orientation: portrait) {
+        #portrait {
+            display: block;
+        }
+        }
+
+        @media (orientation: landscape) {
+        #landscape {
+            display: block;
+        }
+        }
+
+
+
+
+
+        table {
+        border-collapse: separate;
+        border-spacing: 0.2em;
+        width: 100%;
+        table-layout: fixed;
+        background-color: white;
+        
+        }
+
+        th, td {
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+        padding: 12px 8px;
+        font-size: 0.65em;
+        word-wrap: break-word;
+        }
+
+        th {
+        background-color: #4aa66f;
+        color: white;
+        font-size: 12px;
+        }
+
+        .time {
+        background-color: #3071b7;
+        color: #deecf5;
+        font-weight: bold;
+        }
+
+        .empty {
+        background-color: #fff;
+        }
+
+        .class {
+        background-color: #e0e0e0;
+        font-weight: bold;
+        color: #212121;
+        }
+
+            .highlight-now {
+        background-color: rgb(10, 235, 163) !important;
+        animation: none;
+        }
+
+        .highlight-soon {
+        animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+        0%, 100% {
+            background-color: rgb(235, 185, 80);
+        }
+        50% {
+            background-color: #fff3cd;
+        }
+        }
+
+
+        small {
+        display: block;
+        font-weight: normal;
+        font-size: 10px;
+        color: #555;
+        margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        tr {
+            margin: 0 0 1rem 0;
+        }
+
+        td {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        td:before {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            width: 45%;
+            white-space: nowrap;
+        }
+
+        tr:nth-child(odd) td {
+            background-color: #f4f4f4;
+        }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="portrait" class="container-xl" style="text-align: center; margin-top: 50%;">
+        <img src="img/palalatpat.png" alt="patimg" style="margin: 1em; width: 50px;">
+        <h1>กรุณาปรับหน้าจอเป็นแนวนอน</h1>
+    </div>
+
+
+    <div id="landscape">
+        <p style="text-align: center; margin: 0;"><b>AGRI KMITL | YEAR 1 SCHEDULE | 2 BACHELORS DEGREE | กะพริบก่อนถึงคาบ 1 ชม.</b></p>
+        <table id="schedule-table">
+            <tr>
+                <th></th>
+                <th class="time">09 - 10</th>
+                <th class="time">10 - 11</th>
+                <th class="time">11 - 12</th>
+                <th class="time">12 - 13</th>
+                <th class="time">13 - 14</th>
+                <th class="time">14 - 15</th>
+                <th class="time">15 - 16</th>
+                <th class="time">16 - 17</th>
+                <th class="time">17 - 18</th>
+            </tr>
+            <tr>
+                <th>จันทร์</th>
+                <td class="class" colspan="3">GEN PHY 1<br><small>ประชุม-2 อาคาร 12 ชั้น</small></td>
+                <td class="empty"></td>
+                <td class="class" colspan="3">CAL 1<br><small>E12-702 อาคาร 12 ชั้น</small></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+            </tr>
+            <tr>
+                <th>อังคาร</th>
+                <td class="class" colspan="3">MECHANICS<br><small>ME-303 ตึกเครื่องกล</small></td>
+                <td class="empty"></td>
+                <td class="class" colspan="3">GEN CHEM<br><small>ประชุม-1 อาคาร 12 ชั้น</small></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+            </tr>
+            <tr>
+                <th>พุธ</th>
+                <td class="class" colspan="3">GEN PHY LAB 1<br><small>Lab Phys. พระเทพฯ</small></td>
+                <td class="empty"></td>
+                <td class="class" colspan="3">DIGITAL CITIZEN<br><small>D-305 พระเทพฯ-D</small></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+            </tr>
+            <tr>
+                <th>พฤหัสบดี</th>
+                <td class="class" colspan="3">GEN CHEM LAB<br><small>E-402 พระเทพฯ</small></td>
+                <td class="empty"></td>
+                <td class="class" colspan="3">PRE-ACTIVITIES FOR ENGINEERS<br></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+            </tr>
+            <tr>
+                <th>ศุกร์</th>
+                <td class="class" colspan="3">HAPPINESS FARMS<br><small>เจ้าคุณทหารฯ</small></td>
+                <td class="empty"></td>
+                <td class="class" colspan="5">COMMUNICATION SKILLS<br><small>D109 เจ้าคุณทหารฯ</small></td>
+            </tr>
+                <th>อาทิตย์</th>
+                <td class="class" colspan="3">INTRO ENG COMMU.<br><small>MSTeam code:roc95mh</small></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+            </table>
+
+    </div>
+
+    <script>
+const dayNames = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
+const timeSlots = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+
+const now = new Date();
+const currentDay = dayNames[now.getDay()];
+const currentHour = now.getHours();
+
+const rows = document.querySelectorAll("#schedule-table tr");
+
+rows.forEach((row, rowIndex) => {
+  const dayCell = row.querySelector("th");
+  if (!dayCell || dayCell.textContent.trim() !== currentDay) return;
+
+  let cellIndex = 1;
+  Array.from(row.children).forEach((cell) => {
+    if (cell.tagName !== "TD") return;
+
+    const colSpan = parseInt(cell.getAttribute("colspan")) || 1;
+    const slotHour = timeSlots[cellIndex - 1];
+
+    if (slotHour !== undefined) {
+      const startHour = slotHour;
+      const endHour = slotHour + colSpan;
+      const inPeriod = currentHour >= startHour && currentHour < endHour;
+      const oneHourBefore = currentHour + 1 >= startHour && currentHour + 1 < endHour;
+
+      if (!cell.classList.contains("empty")) {
+          if (inPeriod) {
+              cell.classList.add("highlight-now");
+          } else if (oneHourBefore) {
+              cell.classList.add("highlight-soon");
+          }
+        }
+    }
+    cellIndex += colSpan;
+  });
+});
+</script>
+</body>
+</html>
