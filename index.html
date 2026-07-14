@@ -37,16 +37,17 @@
   .bg-layer {
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
     background: var(--bg-white);
+    mix-blend-mode: multiply;
+    opacity: 0.1;
   }
 
   .blob {
     position: absolute;
     border-radius: 50%;
     filter: blur(60px);
-    opacity: 0.9;
     mix-blend-mode: multiply;
     will-change: transform;
   }
@@ -109,6 +110,7 @@
     align-items: center;
     justify-content: center;
     padding: 6vh 6vw;
+    z-index: 1;
   }
 
   .layout {
