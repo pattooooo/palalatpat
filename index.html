@@ -20,6 +20,8 @@
     --coral: #ff7e6b;
     --gold: #ffd166;
     --bg-white: #ffffff;
+    --muted: #b9bccb;
+    --muted-dark: #a3a6b8;
   }
 
   * { box-sizing: border-box; }
@@ -205,6 +207,22 @@
   .pill-fb .icon svg { fill: var(--fb); width: 16px; height: 16px; }
   .pill-queue .icon svg { fill: var(--amber-dark); width: 16px; height: 16px; }
 
+  /* Disabled "Comic" pill */
+  .pill-disabled {
+    background: linear-gradient(135deg, var(--muted), var(--muted-dark));
+    color: #6b6f80;
+    cursor: not-allowed;
+    box-shadow: 0 6px 16px -8px rgba(0,0,0,0.12);
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .pill-disabled .icon {
+    background: rgba(255,255,255,0.7);
+  }
+
+  .pill-disabled .icon svg { fill: var(--muted-dark); width: 16px; height: 16px; }
+
   @media (max-width: 640px) {
     .layout {
       flex-direction: column;
@@ -245,6 +263,13 @@
         </span>
         ตารางคอมมิชชั่น
       </a>
+
+      <span class="pill pill-disabled" aria-disabled="true" tabindex="-1">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h18v8zM7 10h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+        </span>
+        Comic (เร็ว ๆ นี้ !)
+      </span>
     </div>
   </div>
 </div>
